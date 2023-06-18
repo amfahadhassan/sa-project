@@ -23,3 +23,12 @@ jobs:
 
       - name: Eureka
         run: mvn -f eureka/pom.xml clean install
+
+      - name: Input Service
+        run: mvn -f inputService/pom.xml clean install
+
+      - name: Ripper Service
+        run: mvn -f ripperService/pom.xml clean install
+
+      - name: Presentation Service
+        run: mvn -f presentationService/pom.xml clean install
