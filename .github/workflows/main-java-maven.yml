@@ -1,0 +1,25 @@
+name: Maven Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Config service
+        run: mvn -f configService/pom.xml clean install
+
+      - name: Eureka
+        run: mvn -f eureka/pom.xml clean install
