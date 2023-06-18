@@ -32,3 +32,6 @@ jobs:
 
       - name: Presentation Service
         run: mvn -f presentationService/pom.xml clean install
+
+      - name: Log Service
+        run: mvn -f logService/pom.xml clean install
