@@ -1,17 +1,14 @@
 package edu.miu.presentationService.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    private Integer id;
-    private String name;
-    private String email;
-    private String description;
-
+@NoArgsConstructor
+public class Coordinate {
+    private Double x;
+    private Double y;
+    private Double z;
 }
