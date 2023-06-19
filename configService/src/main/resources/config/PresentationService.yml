@@ -1,4 +1,28 @@
 greeting: Hello from presentation service
+spring:
+  data:
+    mongodb:
+#      uri: mongodb+srv://tusharghosh09006:lxncJBSl7IVMjiud@cluster0.xi0h7na.mongodb.net/presentation-service
+#      uri: mongodb://localhost:27017/presentation-service
+      host: localhost
+      port: 27017
+      database: presentation-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: gid
+      auto-offset-reset: earliest;
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: kafka
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 server:
   port: 8090
 eureka:
