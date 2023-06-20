@@ -10,3 +10,8 @@ spring:
           uri: http://localhost:8092/export/
           predicates:
             - Path= /export/**
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
