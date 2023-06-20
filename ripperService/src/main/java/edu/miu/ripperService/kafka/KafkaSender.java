@@ -1,4 +1,4 @@
-package edu.miu.ripperService;
+package edu.miu.ripperService.kafka;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;

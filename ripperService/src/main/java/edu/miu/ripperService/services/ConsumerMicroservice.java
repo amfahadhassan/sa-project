@@ -1,8 +1,9 @@
-package edu.miu.ripperService;
-
-import java.time.LocalDateTime;
+package edu.miu.ripperService.services;
 
 import com.google.gson.Gson;
+import edu.miu.ripperService.kafka.KafkaSender;
+import edu.miu.ripperService.domain.Earthquake;
+import edu.miu.ripperService.domain.ProcessedEarthquake;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -13,6 +14,9 @@ public class ConsumerMicroservice {
 
 	@Autowired
 	private KafkaSender kafkaSender;
+
+	@Autowired
+	private ProcessedEarthquakeService service;
 
 	@KafkaListener(topics = {"earthquake"})
 	public void receive(@Payload String message) {
@@ -40,6 +44,7 @@ public class ConsumerMicroservice {
 		//System.out.println("Id="+ data.getId() + "mag=" + data.getMagnitude() + "place=" + data.getPlace() + "time=" + data.getTime());
 		System.out.println(pe.toString());
 		kafkaSender.send(pe.toString());
+		service.save(pe);
 
 
 

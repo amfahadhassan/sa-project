@@ -1,5 +1,6 @@
-package edu.miu.ripperService;
+package edu.miu.ripperService.kafka;
 
+import edu.miu.ripperService.kafka.KafkaSender;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,12 +18,4 @@ public class AppConfig {
         return TopicBuilder.name("earthquakeprocessed")
                 .build();
     }
-
-	/*
-    @Bean
-    public EarthquakeService earthquakeService(EarthquakeRepository earthquakeRepository) {
-        return new EarthquakeServiceImpl();
-    }
-	*/
-
 }
