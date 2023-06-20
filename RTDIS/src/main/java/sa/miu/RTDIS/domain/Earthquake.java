@@ -1,9 +1,11 @@
 package sa.miu.RTDIS.domain;
 
-import java.util.Arrays;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "earthquake")
 public class Earthquake {
-
+    @Id
     private String id;
     private String place;
     private String time;

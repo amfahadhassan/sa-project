@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sa.miu.RTDIS.domain.Earthquake;
 import sa.miu.RTDIS.mapper.EarthquakeMapper;
+import sa.miu.RTDIS.service.EarthquakeService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,6 +22,9 @@ import java.util.Arrays;
 public class EarthquakeChangesProducer {
     @Autowired
     private Sender sender;
+    @Autowired
+    private EarthquakeService earthquakeService;
+
     private static final int INTERVAL_MS = 10000;   // 10 seconds
 
     public void sendMessage() throws IOException, InterruptedException {
@@ -66,10 +70,12 @@ public class EarthquakeChangesProducer {
 
             Earthquake earthquake = EarthquakeMapper.convertJsontoEarthquakeDto(jsonObjectGson);
 
+            //save to database
+            Earthquake saved = earthquakeService.save(earthquake);
             sender.send(earthquake.toString());
 
             // earthquake data
-            System.out.println(earthquake.toString());
+            System.out.println(saved.toString());
 
             count++;
             Thread.sleep(INTERVAL_MS);
