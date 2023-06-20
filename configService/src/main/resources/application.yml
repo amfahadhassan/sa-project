@@ -7,3 +7,8 @@ spring:
     config:
       server:
         bootstrap: true
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
