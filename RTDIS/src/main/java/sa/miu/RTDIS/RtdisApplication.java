@@ -9,17 +9,9 @@ import sa.miu.RTDIS.kafka.EarthquakeChangesProducer;
 
 @SpringBootApplication
 @EnableKafka
-public class RtdisApplication implements CommandLineRunner {
+public class RtdisApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RtdisApplication.class, args);
-	}
-
-	@Autowired
-	private EarthquakeChangesProducer earthquakeChangesProducer;
-
-	@Override
-	public void run(String... args) throws Exception {
-		earthquakeChangesProducer.sendMessage();
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RtdisApplication.class, args);
+    }
 }
