@@ -1,13 +1,25 @@
 greeting: Hello from ripper service
 spring:
-  application:
-    name: ripper-service
-  cloud:
-    config:
-      uri: http://localhost:8088
-
+  data:
+    mongodb:
+      #      uri: mongodb+srv://tusharghosh09006:lxncJBSl7IVMjiud@cluster0.xi0h7na.mongodb.net/ripper-service
+      #      uri: mongodb://localhost:27017/ripper-service
+      host: localhost
+      port: 27017
+      database: ripper-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: gid
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+server:
+  port: 8091
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9000/eureka/ , http://localhost:9001/eureka/
-    registry-fetch-interval-seconds: 1
+      defaultZone: http://localhost:8761/eureka/

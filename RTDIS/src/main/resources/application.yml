@@ -13,34 +13,34 @@
 #spring.data.mongodb.host=localhost
 #spring.data.mongodb.port=27017
 #spring.data.mongodb.database=earthquakedb
-
-logging:
-  file:
-    path: C:/Users/615639/Desktop/logs
-  root: INFO
-  org:
-    springframework:
-      boot:
-        logging:
-          LogLevel: INFO
-
-server:
-  port: 8090
-
-spring:
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: earthquakedb
-
-  kafka:
-    bootstrap-servers: localhost:9092
-    consumer:
-      group-id: gid
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#
+#logging:
+#  file:
+#    path: C:/Users/615639/Desktop/logs
+#  root: INFO
+#  org:
+#    springframework:
+#      boot:
+#        logging:
+#          LogLevel: INFO
+#
+#server:
+#  port: 8090
+#
+#spring:
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: earthquakedb
+#
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#    consumer:
+#      group-id: gid
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
