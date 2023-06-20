@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConsumerMicroservice {
 	
-	
-	
-	
 
 	@KafkaListener(topics = {"earthquake"})
 	public void receive(@Payload String message) {
