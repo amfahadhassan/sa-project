@@ -1,5 +1,6 @@
 package edu.miu.presentationService.kafka;
 
+import com.google.gson.Gson;
 import edu.miu.presentationService.domain.EarthQuake;
 import edu.miu.presentationService.repository.EarthQuakeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,9 @@ public class Receiver {
     @KafkaListener(topics = {"earthquakeprocessed"})
     public void receive(@Payload String message) {
         System.out.println("Receiver received message= "+ message);
-//        EarthQuake earthQuake1 = new EarthQuake("ak0237teb8pn", 2.7, "CA", LocalDateTime.now());
-//        earthQuakeRepository.save(earthQuake1);
+        Gson g = new Gson();
+        EarthQuake earthQuake = g.fromJson(message, EarthQuake.class);
+        earthQuakeRepository.save(earthQuake);
     }
 
 }

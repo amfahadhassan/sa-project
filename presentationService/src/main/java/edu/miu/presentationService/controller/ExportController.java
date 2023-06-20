@@ -28,6 +28,8 @@ public class ExportController {
     @Autowired
     private ExportService exportService;
 
+    @Autowired
+    private EarthQuakeRepository earthQuakeRepository;
 
     @GetMapping("/csv")
     public void exportToCSV(HttpServletResponse response) throws IOException {
@@ -42,17 +44,12 @@ public class ExportController {
 
 
         ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.STANDARD_PREFERENCE);
-        String[] csvHeader = {"Time", "Magnitude", "State"};
-        String[] nameMapping = {"time", "mg", "state"};
+        String[] csvHeader = {"Time", "Magnitude", "Place"};
+        String[] nameMapping = {"time", "magnitude", "place"};
 
         csvWriter.writeHeader(csvHeader);
 
-        EarthQuake earthQuake1 = new EarthQuake("ak0237teb8pn", 2.7, "CA", LocalDateTime.now());
-        EarthQuake earthQuake2 = new EarthQuake("ak0237teb8pm", 3.7, "CA", LocalDateTime.now());
-        EarthQuake earthQuake3 = new EarthQuake("ak0237teb8pc", 4.7, "Alaska", LocalDateTime.now());
-
-        List<EarthQuake> list = new ArrayList<>(Arrays.asList(earthQuake1, earthQuake2, earthQuake3));
-
+        List<EarthQuake> list =  earthQuakeRepository.findAll();
         for(EarthQuake item : list)
             csvWriter.write(item, nameMapping);
 

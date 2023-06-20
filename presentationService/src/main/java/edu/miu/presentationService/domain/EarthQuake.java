@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 public class EarthQuake {
     @Id
     private String id;
-    private Double mg;
-    private String state;
-    private LocalDateTime time;
+    private Double magnitude;
+    private String place;
+    private String time;
 
 }
