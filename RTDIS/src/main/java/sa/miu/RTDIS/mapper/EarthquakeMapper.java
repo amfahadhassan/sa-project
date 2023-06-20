@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import org.json.JSONObject;
 import sa.miu.RTDIS.domain.Earthquake;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -39,8 +40,9 @@ public class EarthquakeMapper {
 
     static String dateTimeFormatter(Long instant) {
 
-        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochSecond(instant), ZoneId.of("UTC"));
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(instant), ZoneId.of("UTC"));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
         return formatter.format(zonedDateTime);
+
     }
 }

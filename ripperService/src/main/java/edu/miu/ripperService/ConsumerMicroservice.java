@@ -25,13 +25,21 @@ public class ConsumerMicroservice {
 		Gson g = new Gson();
 		Earthquake data = g.fromJson(message, Earthquake.class);
 //String id, String place, String time, double magnitude
-		ProcessedEarthquake pe = new ProcessedEarthquake(data.getId(),data.getPlace(),data.getTime(),data.getMagnitude());
+		String state = "others";
+		String[] strArr = data.getPlace().split(",");
+		if(strArr.length == 2){
+			state = strArr[1].trim();
+		}
+		else{
+			state = data.getPlace();
+		}
+		ProcessedEarthquake pe = new ProcessedEarthquake(data.getId(),state,data.getTime(),data.getMagnitude());
 
 
 		//Earthquake data = g.fromJson(message, Earthquake.class);
 		//System.out.println("Id="+ data.getId() + "mag=" + data.getMagnitude() + "place=" + data.getPlace() + "time=" + data.getTime());
 		System.out.println(pe.toString());
-		kafkaSender.send(pe.toString());
+//		kafkaSender.send(pe.toString());
 
 
 
