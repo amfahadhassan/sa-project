@@ -39,7 +39,7 @@ public class ConsumerMicroservice {
 		//Earthquake data = g.fromJson(message, Earthquake.class);
 		//System.out.println("Id="+ data.getId() + "mag=" + data.getMagnitude() + "place=" + data.getPlace() + "time=" + data.getTime());
 		System.out.println(pe.toString());
-//		kafkaSender.send(pe.toString());
+		kafkaSender.send(pe.toString());
 
 
 
