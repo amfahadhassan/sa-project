@@ -1,3 +1,13 @@
+logging:
+  file:
+    path: C:/Users/615639/Desktop/logs/eureka
+  root: INFO
+  org:
+    springframework:
+      boot:
+        logging:
+          LogLevel: INFO
+
 server:
   port: 8761
 eureka:

@@ -2,7 +2,7 @@ greeting: Hello from input service
 
 logging:
   file:
-    path: C:/Users/615639/Desktop/logs
+    path: C:/Users/615639/Desktop/logs/rtdis
   root: INFO
   org:
     springframework:
